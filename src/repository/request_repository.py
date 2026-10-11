@@ -1,12 +1,12 @@
 import sqlite3
 from typing import List, Optional
 
-from src.models.request import Request
+from src.config.settings import settings
 
 
 class RequestRepository:
-    def __init__(self, db_path: str = "requestsystem.db"):
-        self.db_path = db_path
+    def __init__(self, db_path: str = None):
+        self.db_path = db_path or settings.DB_PATH
 
     def _connect(self):
         conn = sqlite3.connect(self.db_path)
